@@ -1,6 +1,6 @@
 class User{
   final String login;
-  final String avatar_url;
+  final String avatarUrl;
 
-  User({this.login, this.avatar_url});
+  User({this.login, this.avatarUrl});
 }

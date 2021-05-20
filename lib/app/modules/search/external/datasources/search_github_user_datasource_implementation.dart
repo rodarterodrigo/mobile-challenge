@@ -14,7 +14,7 @@ class SearchGithubUserDatasourceImplementation implements SearchGithubUserDataso
   @override
   Future<Either<FailureModel, UsersListModel>> call(String search) async{
     try {
-      final response = await dio.get(Settings.searchUserUrl + 'q=${search}');
+      final response = await dio.get(Settings.searchUserUrl + 'q=$search');
 
       if (response.statusCode != 200)
         throw SearchGithubUserDatasourceError(

@@ -1,3 +1,3 @@
 class Settings{
-  static String searchUserUrl = "https://api.github.com/users/";
+  static String userDetailUrl = "https://api.github.com/users/";
 }
