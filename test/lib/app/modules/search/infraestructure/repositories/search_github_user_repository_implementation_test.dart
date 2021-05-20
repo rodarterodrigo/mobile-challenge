@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobile_challenge/app/modules/search/domain/entities/failure.dart';
+import 'package:mobile_challenge/app/core/shared/domain/entities/failure.dart';
 import 'package:mobile_challenge/app/modules/search/domain/entities/users_list.dart';
 import 'package:mobile_challenge/app/modules/search/infraestructure/datasources/search_github_user_datasource.dart';
 import 'package:mobile_challenge/app/modules/search/infraestructure/errors/errors.dart';
-import 'package:mobile_challenge/app/modules/search/infraestructure/models/failure_model.dart';
+import 'package:mobile_challenge/app/core/shared/infraestructure/models/failure_model.dart';
 import 'package:mobile_challenge/app/modules/search/infraestructure/models/users_list_model.dart';
 import 'package:mobile_challenge/app/modules/search/infraestructure/repositories/search_github_user_repository_implementation_test.dart';
 import 'package:mockito/mockito.dart';

@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mobile_challenge/app/core/packages/dio_client.dart';
 import 'package:mobile_challenge/app/modules/search/external/datasources/search_github_user_datasource_implementation.dart';
 import 'package:mobile_challenge/app/modules/search/infraestructure/errors/errors.dart';
-import 'package:mobile_challenge/app/modules/search/infraestructure/models/failure_model.dart';
+import 'package:mobile_challenge/app/core/shared/infraestructure/models/failure_model.dart';
 import 'package:mobile_challenge/app/modules/search/infraestructure/models/users_list_model.dart';
 import 'package:mockito/mockito.dart';
 

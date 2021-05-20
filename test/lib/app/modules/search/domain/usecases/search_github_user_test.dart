@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobile_challenge/app/modules/search/domain/entities/failure.dart';
+import 'package:mobile_challenge/app/core/shared/domain/entities/failure.dart';
 import 'package:mobile_challenge/app/modules/search/domain/entities/users_list.dart';
 import 'package:mobile_challenge/app/modules/search/domain/errors/failure_search.dart';
 import 'package:mobile_challenge/app/modules/search/domain/repositories/search_github_user_repository.dart';
@@ -15,7 +15,7 @@ final usecase = SearchGithubUser(repository);
 main(){
   test("Must return a UsersList object when query is filled", () async{
     when(repository(any)).thenAnswer((realInvocation) async => Right(UsersList()));
-    final result = await usecase("teste");
+    final result = await usecase("query");
     expect(result.fold(id,id), isA<UsersList>());
   });
 
@@ -27,7 +27,7 @@ main(){
 
   test("Must return a Failure object when query is null", () async{
     when(repository(any)).thenAnswer((realInvocation) async => Left(Failure()));
-    final result = await usecase("");
+    final result = await usecase(null);
     expect(result.fold(id,id), isA<Failure>());
   });
 

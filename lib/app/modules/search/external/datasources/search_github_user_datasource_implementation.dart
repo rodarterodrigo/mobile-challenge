@@ -3,7 +3,7 @@ import 'package:mobile_challenge/app/core/packages/dio_client.dart';
 import 'package:mobile_challenge/app/modules/search/external/settings/settings.dart';
 import 'package:mobile_challenge/app/modules/search/infraestructure/datasources/search_github_user_datasource.dart';
 import 'package:mobile_challenge/app/modules/search/infraestructure/errors/errors.dart';
-import 'package:mobile_challenge/app/modules/search/infraestructure/models/failure_model.dart';
+import 'package:mobile_challenge/app/core/shared/infraestructure/models/failure_model.dart';
 import 'package:mobile_challenge/app/modules/search/infraestructure/models/users_list_model.dart';
 
 class SearchGithubUserDatasourceImplementation implements SearchGithubUserDatasource{

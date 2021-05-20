@@ -1,4 +1,4 @@
-import 'package:mobile_challenge/app/modules/search/domain/entities/user_detail.dart';
+import 'package:mobile_challenge/app/modules/user_detail/domain/entities/user_detail.dart';
 
 class UserDetailModel extends UserDetail{
   UserDetailModel({
