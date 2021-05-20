@@ -7,7 +7,7 @@ import 'package:mobile_challenge/app/modules/search/infraestructure/models/failu
 import 'package:mobile_challenge/app/modules/search/infraestructure/models/users_list_model.dart';
 
 class SearchGithubUserDatasourceImplementation implements SearchGithubUserDatasource{
-  final DioClientImplementation dio;
+  final DioClient dio;
 
   SearchGithubUserDatasourceImplementation(this.dio);
 

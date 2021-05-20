@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-abstract class HttpClient {
+abstract class DioClient {
   Future<Response> get(String url);
   Future<Response> post(String url, {Map<String, dynamic> body});
 }
@@ -13,7 +13,7 @@ class HttpResponse {
   HttpResponse({@required this.data, @required this.statusCode});
 }
 
-class DioClientImplementation implements HttpClient {
+class DioClientImplementation implements DioClient {
   final Dio httpClient;
 
   DioClientImplementation(this.httpClient);

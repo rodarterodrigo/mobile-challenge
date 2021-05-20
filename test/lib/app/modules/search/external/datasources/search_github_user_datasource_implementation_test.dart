@@ -10,7 +10,7 @@ import 'package:mockito/mockito.dart';
 
 import '../../mocks/search_datasource_response.dart';
 
-class DioMock extends Mock implements DioClientImplementation{}
+class DioMock extends Mock implements DioClient{}
 
 final dio = DioMock();
 final datasource = SearchGithubUserDatasourceImplementation(dio);
