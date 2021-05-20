@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 abstract class HttpClient {
-  Future<HttpResponse> get(String url);
-  Future<HttpResponse> post(String url, {Map<String, dynamic> body});
+  Future<Response> get(String url);
+  Future<Response> post(String url, {Map<String, dynamic> body});
 }
 
 class HttpResponse {
@@ -19,29 +19,29 @@ class DioClientImplementation implements HttpClient {
   DioClientImplementation(this.httpClient);
 
   @override
-  Future<HttpResponse> get(String url) async {
+  Future<Response> get(String url) async {
     try {
       final response = await httpClient.get(url);
-      return HttpResponse(
+      return Response(
         data: response.data,
         statusCode: response.statusCode,
       );
     } on DioError {
-      return HttpResponse(data: '', statusCode: 500);
+      return Response(data: '', statusCode: 500);
     }
   }
 
   @override
-  Future<HttpResponse> post(String url,
+  Future<Response> post(String url,
       {@required Map<String, dynamic> body}) async {
     try {
       final response = await httpClient.post(url, data: body);
-      return HttpResponse(
+      return Response(
         data: response.data,
         statusCode: response.statusCode,
       );
     } on DioError {
-      return HttpResponse(data: '', statusCode: 500);
+      return Response(data: '', statusCode: 500);
     }
   }
 }
