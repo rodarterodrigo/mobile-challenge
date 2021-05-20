@@ -6,7 +6,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pet Rescue',
+      title: 'Mobile Challenge',
       theme: ThemeData(
           primaryColor: Theme.of(context).primaryColor,
           primaryColorLight: Theme.of(context).primaryColorLight,

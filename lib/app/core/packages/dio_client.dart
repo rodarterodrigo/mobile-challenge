@@ -6,13 +6,6 @@ abstract class DioClient {
   Future<Response> post(String url, {Map<String, dynamic> body});
 }
 
-class HttpResponse {
-  final String data;
-  final int statusCode;
-
-  HttpResponse({@required this.data, @required this.statusCode});
-}
-
 class DioClientImplementation implements DioClient {
   final Dio httpClient;
 

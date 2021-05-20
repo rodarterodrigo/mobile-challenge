@@ -11,14 +11,13 @@ abstract class SearchGithubUserAbstraction{
 class SearchGithubUser implements SearchGithubUserAbstraction{
   final SearchGithubUserRepository repository;
 
-  SearchGithubUser(this.repository):assert(repository != null);
+  SearchGithubUser(this.repository);
 
   @override
   Future<Either<Failure, UsersList>> call(String search) async {
     try{
-      if(search == null) throw SearchError(message: "A query não pode ser nula.");
-
-      return search.isEmpty? Left(Failure(status: "Busca vazia", statusMessage: "Digite algo para buscar")):
+      return search == null? Left(Failure(status: "Busca nula", statusMessage: "A query não pode ser nula")):
+      search.isEmpty? Left(Failure(status: "Busca vazia", statusMessage: "Digite algo para buscar")):
       await repository(search);
     }
     on SearchError catch(e){

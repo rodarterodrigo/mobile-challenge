@@ -26,6 +26,12 @@ main(){
   });
 
   test("Must return a Failure object when query is null", () async{
+    when(repository(any)).thenAnswer((realInvocation) async => Left(Failure()));
+    final result = await usecase("");
+    expect(result.fold(id,id), isA<Failure>());
+  });
+
+  test("Must return a Failure object when throws an SearchError", () async{
     when(repository(any)).thenThrow(SearchError());
     final result = await usecase(null);
     expect(result.fold(id,id), isA<Failure>());
