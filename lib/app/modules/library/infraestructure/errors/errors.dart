@@ -32,3 +32,14 @@ class DeleteUserDatasourceError implements FailureLibraryDatabase{
     return message == null? "DeleteUserDatasourceError": "DeleteUserDatasourceError: $message";
   }
 }
+
+class GetAllUsersDatasourceError implements FailureLibraryDatabase{
+  @override
+  final String message;
+  GetAllUsersDatasourceError({this.message});
+
+  String toString() {
+    Object message = this.message;
+    return message == null? "GetAllUsersDatasourceError": "GetAllUsersDatasourceError: $message";
+  }
+}
