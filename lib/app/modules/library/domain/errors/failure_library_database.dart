@@ -24,3 +24,14 @@ class UpdateUserError implements FailureLibraryDatabase{
     return message == null? "UpdateUserError": "UpdateUserError: $message";
   }
 }
+
+class DeleteUserError implements FailureLibraryDatabase{
+  @override
+  final String message;
+  DeleteUserError({this.message});
+
+  String toString() {
+    Object message = this.message;
+    return message == null? "DeleteUserError": "DeleteUserError: $message";
+  }
+}

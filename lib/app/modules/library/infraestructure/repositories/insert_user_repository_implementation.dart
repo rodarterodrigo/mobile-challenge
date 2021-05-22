@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:mobile_challenge/app/core/shared/domain/entities/failure.dart';
-import 'package:mobile_challenge/app/modules/library/domain/repositories/isert_user_repository.dart';
+import 'package:mobile_challenge/app/modules/library/domain/repositories/insert_user_repository.dart';
 import 'package:mobile_challenge/app/modules/library/infraestructure/datasources/insert_user_datasource.dart';
 import 'package:mobile_challenge/app/modules/library/infraestructure/errors/errors.dart';
 import 'package:mobile_challenge/app/modules/user_detail/domain/entities/user_detail.dart';
