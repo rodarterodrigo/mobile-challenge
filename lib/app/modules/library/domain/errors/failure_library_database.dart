@@ -13,3 +13,14 @@ class IsertUserError implements FailureLibraryDatabase{
     return message == null? "IsertUserError": "IsertUserError: $message";
   }
 }
+
+class UpdateUserError implements FailureLibraryDatabase{
+  @override
+  final String message;
+  UpdateUserError({this.message});
+
+  String toString() {
+    Object message = this.message;
+    return message == null? "UpdateUserError": "UpdateUserError: $message";
+  }
+}
