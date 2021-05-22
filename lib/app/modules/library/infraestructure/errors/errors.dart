@@ -21,3 +21,14 @@ class UpdateUserDatasourceError implements FailureLibraryDatabase{
     return message == null? "UpdateUserDatasourceError": "UpdateUserDatasourceError: $message";
   }
 }
+
+class DeleteUserDatasourceError implements FailureLibraryDatabase{
+  @override
+  final String message;
+  DeleteUserDatasourceError({this.message});
+
+  String toString() {
+    Object message = this.message;
+    return message == null? "DeleteUserDatasourceError": "DeleteUserDatasourceError: $message";
+  }
+}
