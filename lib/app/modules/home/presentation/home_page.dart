@@ -4,6 +4,8 @@ import 'package:mobile_challenge/app/modules/home/presentation/bloc/events/chang
 import 'package:mobile_challenge/app/modules/home/presentation/bloc/home_bloc.dart';
 import 'package:mobile_challenge/app/modules/home/presentation/bloc/states/change_page_index_state.dart';
 import 'package:mobile_challenge/app/modules/home/presentation/navigation/navigation.dart';
+import 'package:mobile_challenge/app/modules/search/presentation/bloc/search_github_user_bloc.dart';
+import 'package:mobile_challenge/app/modules/search/presentation/views/github_user_search_delegate.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -15,7 +17,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   final homeBloc = Modular.get<HomeBloc>();
+  final searchBloc = Modular.get<SearchGithubUserBloc>();
+
   final Navigation navigation = Navigation();
+
+  @override
+  void dispose() {
+    homeBloc.close();
+    searchBloc.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +43,7 @@ class _HomePageState extends State<HomePage> {
             actions: [
               IconButton(
                   icon: Icon(Icons.search),
-                  onPressed: () {})
+                  onPressed: () => showSearch(context: context, delegate: GithubUserSearchDelegate(searchBloc)))
             ],
             centerTitle: true,
             title: Text(

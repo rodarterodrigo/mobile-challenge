@@ -15,6 +15,8 @@ class SearchGithubUserBloc extends Bloc<SearchGithubUserEvents, SearchGithubUser
   final SearchGithubUser searchGithubUser;
   SearchGithubUserBloc(this.searchGithubUser) : super(SearchGithubUserInitialState());
 
+  String searchUser = "";
+
   @override
   Stream<SearchGithubUserStates> mapEventToState(SearchGithubUserEvents event) async*{
     if(event is SearchGithubUserEvent) yield* _mapSearchGithubUserToState(event);

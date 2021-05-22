@@ -11,6 +11,6 @@ class UsersListModel extends UsersList{
 
   static UsersListModel fromJson(Map<String, dynamic> json) => json == null? null:
     UsersListModel(
-      users: json['items'] != []? (json['items'] as List).map((e) => UserModel.fromJson(json)).toList(): <User>[]
+      users: json['items'] != []? (json['items'] as List).map((e) => UserModel.fromJson(e)).toList(): <User>[]
     );
 }
