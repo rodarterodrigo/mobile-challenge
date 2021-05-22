@@ -10,3 +10,14 @@ class InsertUserDatasourceError implements FailureLibraryDatabase{
     return message == null? "InsertUserDatasourceError": "InsertUserDatasourceError: $message";
   }
 }
+
+class UpdateUserDatasourceError implements FailureLibraryDatabase{
+  @override
+  final String message;
+  UpdateUserDatasourceError({this.message});
+
+  String toString() {
+    Object message = this.message;
+    return message == null? "UpdateUserDatasourceError": "UpdateUserDatasourceError: $message";
+  }
+}
