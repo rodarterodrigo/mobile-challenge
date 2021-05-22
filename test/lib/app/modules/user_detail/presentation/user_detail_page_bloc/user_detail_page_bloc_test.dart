@@ -10,13 +10,13 @@ import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/state
 import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_failure_state.dart';
 import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_loading_state.dart';
 import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_success_state.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/user_detail_page_bloc.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/user_detail_bloc.dart';
 import 'package:mockito/mockito.dart';
 
 class ShowUserDetailMock extends Mock implements ShowUserDetail{}
 
 final usecase = ShowUserDetailMock();
-final bloc = UserDetailPageBloc(usecase);
+final bloc = UserDetailBloc(usecase);
 
 
 main(){

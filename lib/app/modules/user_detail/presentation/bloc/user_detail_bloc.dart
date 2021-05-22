@@ -11,9 +11,9 @@ import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/state
 import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_states.dart';
 import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_success_state.dart';
 
-class UserDetailPageBloc extends Bloc<ShowUserDetailEvents, ShowUserDetailStates>{
+class UserDetailBloc extends Bloc<ShowUserDetailEvents, ShowUserDetailStates>{
   final ShowUserDetail showUserDetail;
-  UserDetailPageBloc(this.showUserDetail) : super(ShowUserDetailInitialState());
+  UserDetailBloc(this.showUserDetail) : super(ShowUserDetailInitialState());
 
   @override
   Stream<ShowUserDetailStates> mapEventToState(ShowUserDetailEvents event) async*{
