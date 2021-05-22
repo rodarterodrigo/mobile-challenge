@@ -35,3 +35,14 @@ class DeleteUserError implements FailureLibraryDatabase{
     return message == null? "DeleteUserError": "DeleteUserError: $message";
   }
 }
+
+class GetAllUsersError implements FailureLibraryDatabase{
+  @override
+  final String message;
+  GetAllUsersError({this.message});
+
+  String toString() {
+    Object message = this.message;
+    return message == null? "GetAllUsersError": "GetAllUsersError: $message";
+  }
+}
