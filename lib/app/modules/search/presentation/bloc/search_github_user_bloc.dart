@@ -15,9 +15,7 @@ class SearchGithubUserBloc extends Bloc<SearchGithubUserEvents, SearchGithubUser
   final SearchGithubUser searchGithubUser;
   SearchGithubUserBloc(this.searchGithubUser) : super(SearchGithubUserInitialState());
 
-  String searchUser = "";
   UsersList usersList = UsersList();
-  int itemIndex = 0;
   bool lastPage = false;
   int itemPage = 1;
   int finalPage = 1;

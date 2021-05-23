@@ -44,7 +44,6 @@ class GithubUserSearchDelegate extends SearchDelegate<String>{
   @override
   Widget buildResults(BuildContext context) {
     if(query.isNotEmpty){
-      searchGithubUserBloc.searchUser = query;
       searchGithubUserBloc.add(SearchGithubUserEvent(query, 10, searchGithubUserBloc.itemPage));
       return StreamBuilder(
         stream: searchGithubUserBloc,

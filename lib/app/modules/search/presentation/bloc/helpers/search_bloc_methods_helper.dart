@@ -8,6 +8,7 @@ abstract class SearchBlocMethodsHelperAbstraction{
 }
 
 class SearchBlocMethodsHelper implements SearchBlocMethodsHelperAbstraction{
+
   final SearchGithubUserBloc searchGithubUserBloc;
 
   SearchBlocMethodsHelper(this.searchGithubUserBloc);
@@ -30,7 +31,6 @@ class SearchBlocMethodsHelper implements SearchBlocMethodsHelperAbstraction{
   void initialize() {
     searchGithubUserBloc.finalPage = 1;
     searchGithubUserBloc.itemPage = 1;
-    searchGithubUserBloc.itemIndex = 0;
     searchGithubUserBloc.usersList.users?.clear();
     searchGithubUserBloc.lastPage = false;
   }
