@@ -8,7 +8,6 @@ import 'package:mobile_challenge/app/modules/search/presentation/bloc/events/sea
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_error_state.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_failure_state.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_initial_state.dart';
-import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_loading_state.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_states.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_success_state.dart';
 
@@ -30,7 +29,7 @@ class SearchGithubUserBloc extends Bloc<SearchGithubUserEvents, SearchGithubUser
 
   Stream<SearchGithubUserStates> _mapSearchGithubUserToState(SearchGithubUserEvent event) async*{
     try {
-      final result = await searchGithubUser(event.search, 10, event.page?? 1);
+      final result = await searchGithubUser(event.search, 10, event.page);
       yield result.fold((l) => SearchGithubUserFailureState(l), (r) {
         if (r?.users != null && r.users.length < 10)
           lastPage = true;

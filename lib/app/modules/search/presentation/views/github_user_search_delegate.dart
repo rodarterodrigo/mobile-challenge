@@ -7,7 +7,6 @@ import 'package:mobile_challenge/app/modules/search/presentation/bloc/search_git
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_error_state.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_failure_state.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_initial_state.dart';
-import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_loading_state.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_success_state.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/helpers/search_helper.dart';
 
@@ -52,15 +51,13 @@ class GithubUserSearchDelegate extends SearchDelegate<String>{
         initialData: SearchGithubUserInitialState,
         builder: (context, snapshot){
           if(snapshot.connectionState == ConnectionState.none) return searchHelper.verifyConnection();
-
+          if(snapshot.connectionState == ConnectionState.waiting) return Center(child: CircularProgressIndicator());
           final state = searchGithubUserBloc.state;
           if(state is SearchGithubUserInitialState) return searchHelper.noResult();
           if(state is SearchGithubUserFailureState) return searchHelper.dataFail(state.failure.statusMessage);
           if(state is SearchGithubUserErrorState) return searchHelper.dataFail(state.failureSearch.message);
           final list = (state as SearchGithubUserSuccessState).usersList;
-          return list == null || list.users.isEmpty?
-          Center(child: CircularProgressIndicator()):
-            NotificationListener<ScrollNotification>(
+          return NotificationListener<ScrollNotification>(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListView.separated(

@@ -22,12 +22,12 @@ class SearchCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(80),
                     child: CachedNetworkImage(
-                      height: 100,
+                      height: 80,
                       imageUrl: user.avatarUrl, fit: BoxFit.fill,
                     ),
                   ),
                 ),
-                SizedBox(width: MediaQuery.of(context).size.width/4),
+                SizedBox(width: MediaQuery.of(context).size.width/5),
                 Text(user.login,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
