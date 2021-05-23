@@ -21,38 +21,34 @@ final bloc = SearchGithubUserBloc(usecase);
 
 main(){
   test("Must return all states in order.", (){
-    when(usecase("query")).thenAnswer((realInvocation) async => Right(UsersList()));
+    when(usecase("query", 10, 1)).thenAnswer((realInvocation) async => Right(UsersList()));
     expect(bloc, emitsInOrder([
-      isA<SearchGithubUserLoadingState>(),
       isA<SearchGithubUserSuccessState>(),
     ]));
-    bloc.add(SearchGithubUserEvent("query"));
+    bloc.add(SearchGithubUserEvent("query", 10, 1));
   });
 
   test("Must return all states in order and show error state", (){
-    when(usecase("query")).thenAnswer((realInvocation) async => Left(Failure()));
+    when(usecase("query", 10, 1)).thenAnswer((realInvocation) async => Left(Failure()));
     expect(bloc, emitsInOrder([
-      isA<SearchGithubUserLoadingState>(),
       isA<SearchGithubUserFailureState>(),
     ]));
-    bloc.add(SearchGithubUserEvent("query"));
+    bloc.add(SearchGithubUserEvent("query", 10, 1));
   });
 
   test("Must return all states in order and show error exception state", (){
-    when(usecase("query")).thenThrow(SearchError());
+    when(usecase("query", 10, 1)).thenThrow(SearchError());
     expect(bloc, emitsInOrder([
-      isA<SearchGithubUserLoadingState>(),
       isA<SearchGithubUserErrorState>(),
     ]));
-    bloc.add(SearchGithubUserEvent("query"));
+    bloc.add(SearchGithubUserEvent("query", 10, 1));
   });
 
   test("Must return all states in order and show error exception state", (){
-    when(usecase("query")).thenThrow(SearchGithubUserDatasourceError());
+    when(usecase("query", 10, 1)).thenThrow(SearchGithubUserDatasourceError());
     expect(bloc, emitsInOrder([
-      isA<SearchGithubUserLoadingState>(),
       isA<SearchGithubUserErrorState>(),
     ]));
-    bloc.add(SearchGithubUserEvent("query"));
+    bloc.add(SearchGithubUserEvent("query", 10, 1));
   });
 }

@@ -1,6 +1,6 @@
-import 'package:mobile_challenge/app/modules/search/domain/entities/user.dart';
+import 'package:mobile_challenge/app/core/shared/domain/entities/user.dart';
 import 'package:mobile_challenge/app/modules/search/domain/entities/users_list.dart';
-import 'package:mobile_challenge/app/modules/search/infraestructure/models/user_model.dart';
+import 'package:mobile_challenge/app/core/shared/infraestructure/models/user_model.dart';
 
 class UsersListModel extends UsersList{
   UsersListModel({

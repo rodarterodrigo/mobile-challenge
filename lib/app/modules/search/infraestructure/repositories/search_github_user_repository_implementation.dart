@@ -11,9 +11,9 @@ class SearchGithubUserRepositoryImplementation implements SearchGithubUserReposi
   SearchGithubUserRepositoryImplementation(this.datasource);
 
   @override
-  Future<Either<Failure, UsersList>> call(String search) async{
+  Future<Either<Failure, UsersList>> call(String search, int itensPerPage, int page) async{
     try{
-      return await datasource(search)..fold((l) => Left(l), (r) => Right(r));
+      return await datasource(search, itensPerPage, page)..fold((l) => Left(l), (r) => Right(r));
     }
     on SearchGithubUserDatasourceError catch(e){
       return Left(Failure(status: "SearchGithubUserDatasourceError", statusMessage: e.toString()));

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobile_challenge/app/core/shared/widgets/search_card.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/events/search_github_user_event.dart';
+import 'package:mobile_challenge/app/modules/search/presentation/bloc/helpers/search_bloc_methods_helper.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/search_github_user_bloc.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_error_state.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_failure_state.dart';
@@ -13,6 +14,7 @@ import 'package:mobile_challenge/app/modules/search/presentation/helpers/search_
 class GithubUserSearchDelegate extends SearchDelegate<String>{
   final SearchGithubUserBloc searchGithubUserBloc;
   final SearchHelper searchHelper = SearchHelper();
+  final SearchBlocMethodsHelper searchBlocMethodsHelper = Modular.get<SearchBlocMethodsHelper>();
 
   GithubUserSearchDelegate(this.searchGithubUserBloc);
 
@@ -44,7 +46,7 @@ class GithubUserSearchDelegate extends SearchDelegate<String>{
   Widget buildResults(BuildContext context) {
     if(query.isNotEmpty){
       searchGithubUserBloc.searchUser = query;
-      searchGithubUserBloc.add(SearchGithubUserEvent(query));
+      searchGithubUserBloc.add(SearchGithubUserEvent(query, 10, searchGithubUserBloc.itemPage));
       return StreamBuilder(
         stream: searchGithubUserBloc,
         initialData: SearchGithubUserInitialState,
@@ -53,11 +55,12 @@ class GithubUserSearchDelegate extends SearchDelegate<String>{
 
           final state = searchGithubUserBloc.state;
           if(state is SearchGithubUserInitialState) return searchHelper.noResult();
-          if(state is SearchGithubUserLoadingState) return Center(child: CircularProgressIndicator());
           if(state is SearchGithubUserFailureState) return searchHelper.dataFail(state.failure.statusMessage);
           if(state is SearchGithubUserErrorState) return searchHelper.dataFail(state.failureSearch.message);
           final list = (state as SearchGithubUserSuccessState).usersList;
-          return NotificationListener<ScrollNotification>(
+          return list == null || list.users.isEmpty?
+          Center(child: CircularProgressIndicator()):
+            NotificationListener<ScrollNotification>(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListView.separated(
@@ -70,8 +73,8 @@ class GithubUserSearchDelegate extends SearchDelegate<String>{
                   },
                   separatorBuilder: (context, index) => SizedBox(),
                   itemCount: list.users.length),
-            )
-            // onNotification: (value) => null,
+            ),
+            onNotification: (value) => searchBlocMethodsHelper.handleNotification(value, query),
           );
         },
       );
@@ -82,6 +85,7 @@ class GithubUserSearchDelegate extends SearchDelegate<String>{
 
   @override
   Widget buildSuggestions(BuildContext context) {
+    searchBlocMethodsHelper.initialize();
     return searchHelper.noResult();
   }
 }

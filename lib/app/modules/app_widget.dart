@@ -17,20 +17,6 @@ class AppWidget extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       themeMode: ThemeMode.dark,
-      // theme: ThemeData(
-      //     primaryColor: Theme.of(context).primaryColor,
-      //     primaryColorLight: Theme.of(context).primaryColorLight,
-      //     buttonTheme: ButtonThemeData(
-      //       buttonColor: Theme.of(context).primaryColor,
-      //     ),
-      //     iconTheme: IconThemeData(color: Theme.of(context).iconTheme.color),
-      //     textTheme: TextTheme(
-      //         bodyText2: TextStyle(
-      //           color: Colors.grey[600],
-      //         ),
-      //         bodyText1: TextStyle(color: Colors.grey[800])),
-      //     unselectedWidgetColor: Colors.grey[300],
-      //     backgroundColor: Colors.grey[100]),
       supportedLocales: [const Locale('pt', 'BR')],
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,

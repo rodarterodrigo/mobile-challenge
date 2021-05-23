@@ -5,7 +5,7 @@ import 'package:mobile_challenge/app/modules/search/domain/errors/failure_search
 import 'package:mobile_challenge/app/modules/search/domain/repositories/search_github_user_repository.dart';
 
 abstract class SearchGithubUserAbstraction{
-  Future<Either<Failure, UsersList>> call(String search);
+  Future<Either<Failure, UsersList>> call(String search, int itensPerPage, int page);
 }
 
 class SearchGithubUser implements SearchGithubUserAbstraction{
@@ -14,11 +14,11 @@ class SearchGithubUser implements SearchGithubUserAbstraction{
   SearchGithubUser(this.repository);
 
   @override
-  Future<Either<Failure, UsersList>> call(String search) async {
+  Future<Either<Failure, UsersList>> call(String search, int itensPerPage, int page) async {
     try{
       return search == null? Left(Failure(status: "Busca nula", statusMessage: "A query não pode ser nula")):
       search.isEmpty? Left(Failure(status: "Busca vazia", statusMessage: "Digite algo para buscar")):
-      await repository(search);
+      await repository(search, itensPerPage, page);
     }
     on SearchError catch(e){
       return Left(Failure(status: "SearchError", statusMessage: e.message));

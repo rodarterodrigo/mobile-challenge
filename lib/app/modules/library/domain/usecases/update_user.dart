@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:mobile_challenge/app/core/shared/domain/entities/failure.dart';
+import 'package:mobile_challenge/app/modules/library/domain/entities/user_id.dart';
 import 'package:mobile_challenge/app/modules/library/domain/errors/failure_library_database.dart';
 import 'package:mobile_challenge/app/modules/library/domain/repositories/update_user_repository.dart';
 import 'package:mobile_challenge/app/modules/user_detail/domain/entities/user_detail.dart';
 
 abstract class UpdateUserAbstraction{
-  Future<Either<Failure, int>> call(UserDetail userDetail);
+  Future<Either<Failure, UserId>> call(UserDetail userDetail);
 }
 
 class UpdateUser implements UpdateUserAbstraction{
@@ -14,7 +15,7 @@ class UpdateUser implements UpdateUserAbstraction{
   UpdateUser(this.repository);
 
   @override
-  Future<Either<Failure, int>> call(UserDetail userDetail) async {
+  Future<Either<Failure, UserId>> call(UserDetail userDetail) async {
     try{
       return userDetail == null? Left(Failure(status: "Entidade nula", statusMessage: "A entidade não pode ser nula")):
       await repository(userDetail);

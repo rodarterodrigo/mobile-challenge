@@ -16,7 +16,7 @@ class GetAllUsersDatasourceImplementation implements GetAllUsersDatasource{
     try {
       final db = await dbProviderAbstraction.database;
       var query = await db.query('library');
-      var result = query != null? (query as List).map((e) => UserDetailListModel.fromJson(e)).toList(): UserDetailList();
+      var result = query != null? query.map((e) => UserDetailListModel.fromJson(e)).toList(): UserDetailList();
       db.close();
       return Right(result);
     }

@@ -19,25 +19,25 @@ main(){
   test("Must complete the request", (){
     when(dio.get(any)).thenAnswer((realInvocation)
     async => Response(data: searchGithubUserDatasourceResponse, statusCode: 200));
-    final result = datasource("search");
+    final result = datasource("search", 10, 1);
     expect(result, completes);
   });
 
   test("Must return an UserListModel object", () async{
     when(dio.get(any)).thenAnswer((realInvocation)
     async => Response(data: searchGithubUserDatasourceResponse, statusCode: 200));
-    final result = await datasource("search");
+    final result = await datasource("search", 10, 1);
     expect(result.fold(id,id), isA<UsersListModel>());
   });
   test("Must returna an FailureModel when throws a SearchGithubUserDatasourceError", () async{
     when(dio.get(any)).thenThrow(SearchGithubUserDatasourceError());
-    final result = await datasource("search");
+    final result = await datasource("search", 10, 1);
     expect(result.fold(id,id), isA<FailureModel>());
   });
 
   test("Must returna an FailureModel when throws a Exception", () async{
     when(dio.get(any)).thenThrow(Exception());
-    final result = await datasource("search");
+    final result = await datasource("search", 10, 1);
     expect(result.fold(id,id), isA<FailureModel>());
   });
 }

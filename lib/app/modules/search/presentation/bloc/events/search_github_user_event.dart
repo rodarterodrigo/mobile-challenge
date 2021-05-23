@@ -2,6 +2,8 @@ import 'package:mobile_challenge/app/modules/search/presentation/bloc/events/sea
 
 class SearchGithubUserEvent extends SearchGithubUserEvents{
   final String search;
+  final int itemsPerPage;
+  final int page;
 
-  SearchGithubUserEvent(this.search);
+  SearchGithubUserEvent(this.search, this.itemsPerPage, this.page);
 }

@@ -3,5 +3,5 @@ import 'package:mobile_challenge/app/core/shared/infraestructure/models/failure_
 import 'package:mobile_challenge/app/modules/search/infraestructure/models/users_list_model.dart';
 
 abstract class SearchGithubUserDatasource{
-  Future<Either<FailureModel, UsersListModel>> call(String search);
+  Future<Either<FailureModel, UsersListModel>> call(String search, int itensPerPage, int page);
 }

@@ -14,32 +14,32 @@ final usecase = SearchGithubUser(repository);
 
 main(){
   test("Must return a UsersList object when query is filled", () async{
-    when(repository(any)).thenAnswer((realInvocation) async => Right(UsersList()));
-    final result = await usecase("query");
+    when(repository(any, any, any)).thenAnswer((realInvocation) async => Right(UsersList()));
+    final result = await usecase("query", 10, 1);
     expect(result.fold(id,id), isA<UsersList>());
   });
 
   test("Must return a Failure object when query isn't filled", () async{
-    when(repository(any)).thenAnswer((realInvocation) async => Left(Failure()));
-    final result = await usecase("");
+    when(repository(any, any, any)).thenAnswer((realInvocation) async => Left(Failure()));
+    final result = await usecase("", 10, 1);
     expect(result.fold(id,id), isA<Failure>());
   });
 
   test("Must return a Failure object when query is null", () async{
-    when(repository(any)).thenAnswer((realInvocation) async => Left(Failure()));
-    final result = await usecase(null);
+    when(repository(any, any, any)).thenAnswer((realInvocation) async => Left(Failure()));
+    final result = await usecase(null, 10, 1);
     expect(result.fold(id,id), isA<Failure>());
   });
 
   test("Must return a Failure object when throws an SearchError", () async{
-    when(repository(any)).thenThrow(SearchError());
-    final result = await usecase(null);
+    when(repository(any, any, any)).thenThrow(SearchError());
+    final result = await usecase(null, 10, 1);
     expect(result.fold(id,id), isA<Failure>());
   });
 
   test("Must return a Failure object when throws an Exception", () async{
-    when(repository(any)).thenThrow(Exception());
-    final result = await usecase(null);
+    when(repository(any, any, any)).thenThrow(Exception());
+    final result = await usecase(null, 10, 1);
     expect(result.fold(id,id), isA<Failure>());
   });
 }
