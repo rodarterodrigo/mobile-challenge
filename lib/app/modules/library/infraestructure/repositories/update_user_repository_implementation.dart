@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:mobile_challenge/app/core/shared/domain/entities/failure.dart';
+import 'package:mobile_challenge/app/modules/library/domain/entities/user_id.dart';
 import 'package:mobile_challenge/app/modules/library/domain/repositories/update_user_repository.dart';
 import 'package:mobile_challenge/app/modules/library/infraestructure/datasources/update_user_datasource.dart';
 import 'package:mobile_challenge/app/modules/library/infraestructure/errors/errors.dart';
@@ -11,7 +12,7 @@ class UpdateUserRepositoryImplementation implements UpdateUserRepository{
   UpdateUserRepositoryImplementation(this.datasource);
 
   @override
-  Future<Either<Failure, int>> call(UserDetail userDetail) async{
+  Future<Either<Failure, UserId>> call(UserDetail userDetail) async{
     try{
       return await datasource(userDetail)..fold((l) => Left(l), (r) => Right(r));
     }

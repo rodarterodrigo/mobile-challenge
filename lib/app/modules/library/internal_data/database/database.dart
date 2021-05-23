@@ -1,23 +1,29 @@
-import 'package:mobile_challenge/app/modules/library/internal/settings/initial_library_table.dart';
+import 'package:mobile_challenge/app/modules/library/internal_data/settings/initial_library_table.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-class DBProvidder {
+abstract class DBProviderAbstraction{
+  Future<Database> get database;
+  Future initDB();
+  Future close();
+}
+
+class DBProvidder implements DBProviderAbstraction{
 
   DBProvidder._();
 
   static final DBProvidder db = DBProvidder._();
   Database _database;
 
-  factory DBProvidder() {
-    return db;
-  }
+  factory DBProvidder() => db;
 
-  Future<Database> get database async {
-    if(_database != null) return _database;
-    return _database = await initDB();
-  }
+  @override
+  Future close() async => db._database.close();
 
+  @override
+  Future<Database> get database async => _database != null? _database: _database = await initDB();
+
+  @override
   initDB() async {
     final dbpath = await getDatabasesPath();
     final localdb = join(dbpath, 'mobilechallenge.db');

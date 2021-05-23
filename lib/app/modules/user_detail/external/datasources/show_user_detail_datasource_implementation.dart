@@ -14,7 +14,7 @@ class ShowUserDetailDatasourceImplementation implements ShowUserDetailDatasource
   @override
   Future<Either<FailureModel, UserDetailModel>> call(String userLogin) async{
     try {
-      final response = await dio.get(Settings.userDetailUrl + userLogin);
+      final response = await dio.get('${Settings.userDetailUrl}$userLogin');
 
       if (response.statusCode != 200)
         throw ShowUserDetailDatasourceError(

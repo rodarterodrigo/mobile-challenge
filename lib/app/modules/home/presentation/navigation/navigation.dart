@@ -9,9 +9,13 @@ class Navigation implements INavigation {
   @override
   Widget viewList(int index, String search) {
     List<Widget> views = [
+    Text(
+        "HomePage"
+    ),
       null,
-      null,
-      null,
+      Text(
+          "Biblioteca de favoritos"
+      ),
     ];
     return views[index];
   }

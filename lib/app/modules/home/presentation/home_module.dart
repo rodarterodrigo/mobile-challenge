@@ -7,6 +7,7 @@ import 'package:mobile_challenge/app/modules/search/domain/usecases/search_githu
 import 'package:mobile_challenge/app/modules/search/external/datasources/search_github_user_datasource_implementation.dart';
 import 'package:mobile_challenge/app/modules/search/infraestructure/repositories/search_github_user_repository_implementation.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/search_github_user_bloc.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/views/user_detail_module.dart';
 
 class HomeModule extends Module {
   @override
@@ -23,5 +24,6 @@ class HomeModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute("/", child: (context, args) => HomePage()),
+    ModuleRoute("/userdetail", module: UserDetailModule(), transition: TransitionType.rightToLeft)
   ];
 }

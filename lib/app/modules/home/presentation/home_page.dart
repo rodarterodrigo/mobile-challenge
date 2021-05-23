@@ -16,11 +16,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  ScrollController scrollController = ScrollController();
   final homeBloc = Modular.get<HomeBloc>();
   final searchBloc = Modular.get<SearchGithubUserBloc>();
 
   final Navigation navigation = Navigation();
 
+  @override
+  void initState() {
+    super.initState();
+    scrollController = ScrollController()
+      ..addListener(() {
+        if (scrollController.position.maxScrollExtent == scrollController.position.pixels) {
+        }
+      });
+  }
   @override
   void dispose() {
     homeBloc.close();
@@ -46,16 +56,17 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () => showSearch(context: context, delegate: GithubUserSearchDelegate(searchBloc)))
             ],
             centerTitle: true,
-            title: Text(
-                "Mobile Challenge"
+            title: GestureDetector(
+              child: Text(
+                  "Mobile Challenge"
+              ),
+              onTap: () => Modular.to.popAndPushNamed("/"),
             ),
             elevation: 6,
           ),
           body: Container(
             child: Center(
-              child: Text(
-                  "HomePage"
-              ),
+              child: navigation.viewList(homeBloc.index, "")
             ),
           ),
           bottomNavigationBar: BottomNavigationBar(
@@ -65,7 +76,9 @@ class _HomePageState extends State<HomePage> {
             type: BottomNavigationBarType.fixed,
             items: navigation.bottonNavigation(),
             currentIndex: homeBloc.index,
-            onTap: (index) => homeBloc.add(ChangePageIndexEvent(index)),
+            onTap: (index) => index != 1?
+                homeBloc.add(ChangePageIndexEvent(index)):
+                showSearch(context: context, delegate: GithubUserSearchDelegate(searchBloc)),
           ),
         );
       },
