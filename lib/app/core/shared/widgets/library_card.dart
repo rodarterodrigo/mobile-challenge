@@ -13,7 +13,7 @@ class LibraryCard extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.only(bottom: 8),
         child: Card(
-          child: Row(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(userDetail.login,
