@@ -4,6 +4,7 @@ import 'package:mobile_challenge/app/modules/home/presentation/bloc/events/chang
 import 'package:mobile_challenge/app/modules/home/presentation/bloc/home_bloc.dart';
 import 'package:mobile_challenge/app/modules/home/presentation/bloc/states/change_page_index_state.dart';
 import 'package:mobile_challenge/app/modules/home/presentation/navigation/navigation.dart';
+import 'package:mobile_challenge/app/modules/library/internal_data/database/database.dart';
 import 'package:mobile_challenge/app/modules/library/presenter/bloc/library_bloc.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/search_github_user_bloc.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/views/github_user_search_delegate.dart';
@@ -21,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   final homeBloc = Modular.get<HomeBloc>();
   final searchBloc = Modular.get<SearchGithubUserBloc>();
   final libraryBloc = Modular.get<LibraryBloc>();
+  final database = Modular.get<DBProvidder>();
 
   final Navigation navigation = Navigation();
 
@@ -29,6 +31,7 @@ class _HomePageState extends State<HomePage> {
     homeBloc.close();
     searchBloc.close();
     libraryBloc.close();
+    database.close();
     super.dispose();
   }
 
@@ -50,11 +53,8 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () => showSearch(context: context, delegate: GithubUserSearchDelegate(searchBloc)))
             ],
             centerTitle: true,
-            title: GestureDetector(
-              child: Text(
-                  "Mobile Challenge"
-              ),
-              onTap: () => Modular.to.popAndPushNamed("/"),
+            title: Text(
+                "Mobile Challenge"
             ),
             elevation: 6,
           ),

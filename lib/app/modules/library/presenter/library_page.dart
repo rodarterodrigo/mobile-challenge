@@ -35,14 +35,14 @@ class _LibraryPageState extends State<LibraryPage> {
         if(state is GetAllUsersFailureState) return Center(child: Text(state.failure.statusMessage, style: TextStyle(fontSize: 20)));
         if(state is LibraryErrorState) return Center(child: Text(state.failureLibraryDatabase.message, style: TextStyle(fontSize: 20)));
         final list = (state as GetAllUsersSuccessState).userDetailList;
-        return list.users.length > 1?
+        return list.users.length >= 1?
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView.separated(
               physics: BouncingScrollPhysics(),
               itemBuilder: (context, index){
                 return LibraryCard(
-                  onTap: () => Modular.to.pushNamed("/userdetail", arguments: list.users.elementAt(index)),
+                  onTap: () => Modular.to.pushNamed("/libraryuserdetail", arguments: list.users.elementAt(index)),
                   userDetail: list.users.elementAt(index),
                 );
               },

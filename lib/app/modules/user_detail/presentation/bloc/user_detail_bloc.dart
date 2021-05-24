@@ -2,14 +2,15 @@ import 'package:bloc/bloc.dart';
 import 'package:mobile_challenge/app/modules/user_detail/domain/errors/user_detail_failure.dart';
 import 'package:mobile_challenge/app/modules/user_detail/domain/usecases/show_user_detail.dart';
 import 'package:mobile_challenge/app/modules/user_detail/infraestructure/errors/errors.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/events/search_user_event.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/events/show_user_detail_events.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_error_state.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_failure_state.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_initial_state.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_loading_state.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_states.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_success_state.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/events/user_detail_events/search_user_event.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/user_detail_states/show_user_detail_error_state.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/user_detail_states/show_user_detail_failure_state.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/user_detail_states/show_user_detail_initial_state.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/user_detail_states/show_user_detail_loading_state.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/user_detail_states/show_user_detail_states.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/user_detail_states/show_user_detail_success_state.dart';
+
+import 'events/user_detail_events/show_user_detail_events.dart';
 
 class UserDetailBloc extends Bloc<ShowUserDetailEvents, ShowUserDetailStates>{
   final ShowUserDetail showUserDetail;

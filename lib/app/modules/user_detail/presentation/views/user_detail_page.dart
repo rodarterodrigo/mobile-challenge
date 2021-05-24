@@ -4,12 +4,16 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobile_challenge/app/core/shared/widgets/custom_buttom.dart';
 import 'package:mobile_challenge/app/core/shared/widgets/enums/button_style.dart';
 import 'package:mobile_challenge/app/core/shared/domain/entities/user.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/events/search_user_event.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_error_state.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_failure_state.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_initial_state.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_loading_state.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_success_state.dart';
+import 'package:mobile_challenge/app/modules/library/presenter/bloc/events/get_all_users_event.dart';
+import 'package:mobile_challenge/app/modules/library/presenter/bloc/library_bloc.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/events/favorite_user_events/favorite_user_event.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/events/user_detail_events/search_user_event.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/favorite_user_bloc.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/user_detail_states/show_user_detail_error_state.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/user_detail_states/show_user_detail_failure_state.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/user_detail_states/show_user_detail_initial_state.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/user_detail_states/show_user_detail_loading_state.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/user_detail_states/show_user_detail_success_state.dart';
 import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/user_detail_bloc.dart';
 
 class UserDetailPage extends StatefulWidget {
@@ -24,10 +28,13 @@ class UserDetailPage extends StatefulWidget {
 class _UserDetailPageState extends State<UserDetailPage> {
 
   final UserDetailBloc userDetailBloc = Modular.get<UserDetailBloc>();
+  final FavoriteUserBloc favoriteUserBloc = Modular.get<FavoriteUserBloc>();
+  final LibraryBloc libraryBloc = Modular.get<LibraryBloc>();
 
   @override
   void dispose() {
     userDetailBloc.close();
+    favoriteUserBloc.close();
     super.dispose();
   }
 
@@ -104,7 +111,10 @@ class _UserDetailPageState extends State<UserDetailPage> {
                           text: "Voltar",
                           buttonStyle: CustomButtonStyle.Secondary),
                       CustomButton(
-                          onPressed: () => null,
+                          onPressed: () {
+                            favoriteUserBloc.add(FavoriteUserEvent(userDetail));
+                            libraryBloc.add(GetAllUsersEvent());
+                          },
                           text: "Favorito",
                           buttonStyle: CustomButtonStyle.Primary),
                     ],

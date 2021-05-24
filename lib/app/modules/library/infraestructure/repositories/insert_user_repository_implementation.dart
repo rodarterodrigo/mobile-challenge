@@ -7,14 +7,14 @@ import 'package:mobile_challenge/app/modules/library/infraestructure/errors/erro
 import 'package:mobile_challenge/app/modules/user_detail/domain/entities/user_detail.dart';
 
 class InsertUserRepositoryImplementation implements InsertUserRepository{
-  final InsertUserDatasource datasource;
+  final InsertUserDatasource insertUserDatasource;
 
-  InsertUserRepositoryImplementation(this.datasource);
+  InsertUserRepositoryImplementation(this.insertUserDatasource);
 
   @override
   Future<Either<Failure, UserId>> call(UserDetail userDetail) async{
     try{
-      return await datasource(userDetail)..fold((l) => Left(l), (r) => Right(r));
+        return await insertUserDatasource(userDetail)..fold((l) => Left(l), (r) => Right(r));
     }
     on InsertUserDatasourceError catch(e){
       return Left(Failure(status: "InsertUserDatasourceError", statusMessage: e.toString()));

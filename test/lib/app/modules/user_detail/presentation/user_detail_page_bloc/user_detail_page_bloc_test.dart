@@ -5,11 +5,11 @@ import 'package:mobile_challenge/app/modules/user_detail/domain/entities/user_de
 import 'package:mobile_challenge/app/modules/user_detail/domain/errors/user_detail_failure.dart';
 import 'package:mobile_challenge/app/modules/user_detail/domain/usecases/show_user_detail.dart';
 import 'package:mobile_challenge/app/modules/user_detail/infraestructure/errors/errors.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/events/search_user_event.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_error_state.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_failure_state.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_loading_state.dart';
-import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/show_user_detail_success_state.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/events/user_detail_events/search_user_event.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/user_detail_states/show_user_detail_error_state.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/user_detail_states/show_user_detail_failure_state.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/user_detail_states/show_user_detail_loading_state.dart';
+import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/states/user_detail_states/show_user_detail_success_state.dart';
 import 'package:mobile_challenge/app/modules/user_detail/presentation/bloc/user_detail_bloc.dart';
 import 'package:mockito/mockito.dart';
 

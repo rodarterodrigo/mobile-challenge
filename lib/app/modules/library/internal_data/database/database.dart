@@ -10,12 +10,8 @@ abstract class DBProviderAbstraction{
 
 class DBProvidder implements DBProviderAbstraction{
 
-  //DBProvidder._();
-
   static final DBProvidder db = DBProvidder();
   Database _database;
-
-  //factory DBProvidder() => db;
 
   @override
   Future close() async => db._database.close();
