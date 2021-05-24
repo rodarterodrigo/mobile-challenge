@@ -20,8 +20,8 @@ class CustomButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(2.5)),
             padding: EdgeInsets.only(right: 16, left: 16, top: 10, bottom: 10),
-            color: Theme.of(context).primaryColor,
-            textColor: Colors.white,
+            color: Theme.of(context).accentColor,
+            textColor: Colors.black87,
             child: new Text(text, style: getButtonFontStyle(buttonStyle, context)),
             onPressed: onPressed);
         break;
@@ -29,11 +29,13 @@ class CustomButton extends StatelessWidget {
         return MaterialButton(
             shape: RoundedRectangleBorder(
                 side: BorderSide(
-                    color: Theme.of(context).primaryColor, width: 2, style: BorderStyle.solid),
+                    color: Theme.of(context).accentColor,
+                    width: 1,
+                    style: BorderStyle.solid),
                 borderRadius: new BorderRadius.circular(2.5)),
             padding: EdgeInsets.only(right: 16, left: 16, top: 10, bottom: 10),
-            color: Colors.white,
-            textColor: Colors.white,
+            color: Theme.of(context).primaryColor,
+            textColor: Colors.black87,
             child: new Text(text, style: getButtonFontStyle(buttonStyle, context)),
             onPressed: onPressed);
         break;
@@ -44,12 +46,12 @@ class CustomButton extends StatelessWidget {
     switch (buttonStyle) {
       case CustomButtonStyle.Primary:
         return GoogleFonts.poppins(
-            fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500);
+            fontSize: 16, color: Theme.of(context).primaryColor, fontWeight: FontWeight.w500);
         break;
       case CustomButtonStyle.Secondary:
         return GoogleFonts.poppins(
             fontSize: 16,
-            color: Theme.of(context).primaryColor,
+            color: Colors.white,
             fontWeight: FontWeight.w500);
         break;
       default:

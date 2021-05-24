@@ -4,6 +4,7 @@ import 'package:mobile_challenge/app/modules/home/presentation/bloc/events/chang
 import 'package:mobile_challenge/app/modules/home/presentation/bloc/home_bloc.dart';
 import 'package:mobile_challenge/app/modules/home/presentation/bloc/states/change_page_index_state.dart';
 import 'package:mobile_challenge/app/modules/home/presentation/navigation/navigation.dart';
+import 'package:mobile_challenge/app/modules/library/presenter/bloc/library_bloc.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/search_github_user_bloc.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/views/github_user_search_delegate.dart';
 
@@ -19,22 +20,15 @@ class _HomePageState extends State<HomePage> {
   ScrollController scrollController = ScrollController();
   final homeBloc = Modular.get<HomeBloc>();
   final searchBloc = Modular.get<SearchGithubUserBloc>();
+  final libraryBloc = Modular.get<LibraryBloc>();
 
   final Navigation navigation = Navigation();
 
   @override
-  void initState() {
-    super.initState();
-    scrollController = ScrollController()
-      ..addListener(() {
-        if (scrollController.position.maxScrollExtent == scrollController.position.pixels) {
-        }
-      });
-  }
-  @override
   void dispose() {
     homeBloc.close();
     searchBloc.close();
+    libraryBloc.close();
     super.dispose();
   }
 

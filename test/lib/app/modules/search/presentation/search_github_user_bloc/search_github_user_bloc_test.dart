@@ -9,7 +9,6 @@ import 'package:mobile_challenge/app/modules/search/presentation/bloc/events/sea
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/search_github_user_bloc.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_error_state.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_failure_state.dart';
-import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_loading_state.dart';
 import 'package:mobile_challenge/app/modules/search/presentation/bloc/states/search_github_user_success_state.dart';
 import 'package:mockito/mockito.dart';
 

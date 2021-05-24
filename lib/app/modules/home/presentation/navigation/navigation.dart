@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_challenge/app/modules/library/presenter/library_page.dart';
 
 abstract class INavigation {
   Widget viewList(int index, String search);
@@ -13,9 +14,7 @@ class Navigation implements INavigation {
         "HomePage"
     ),
       null,
-      Text(
-          "Biblioteca de favoritos"
-      ),
+      LibraryPage(),
     ];
     return views[index];
   }

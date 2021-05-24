@@ -9,7 +9,7 @@ class UserDetailListModel extends UserDetailList{
     users: users,
   );
 
-  static UserDetailListModel fromJson(Map<String, dynamic> json) => json == null? null:
+  static UserDetailListModel fromJson(Map<dynamic, dynamic> json) => json == null? null:
       UserDetailListModel(
         users: (json as List).map((e) => UserDetailModel.fromJson(e)).toList(),
       );

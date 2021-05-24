@@ -104,7 +104,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
                           text: "Voltar",
                           buttonStyle: CustomButtonStyle.Secondary),
                       CustomButton(
-                          onPressed: () => Modular.to.pop(),
+                          onPressed: () => null,
                           text: "Favorito",
                           buttonStyle: CustomButtonStyle.Primary),
                     ],

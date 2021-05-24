@@ -26,4 +26,14 @@ class UserDetailModel extends UserDetail{
         name: json['name'],
         bio: json['bio'],
       );
+
+  static Map<String, dynamic> toJson(UserDetail userDetail){
+    return{
+      "id": userDetail.id,
+      "login": userDetail.login,
+      "location": userDetail.location,
+      "name": userDetail.name,
+      "bio": userDetail.bio,
+    };
+  }
 }

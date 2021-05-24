@@ -20,7 +20,7 @@ class InsertUser implements InsertUserAbstraction{
       return userDetail == null? Left(Failure(status: "Entidade nula", statusMessage: "A entidade não pode ser nula")):
       await repository(userDetail);
     }
-    on IsertUserError catch(e){
+    on InsertUserError catch(e){
       return Left(Failure(status: "IsertUserError", statusMessage: e.message));
     }
     on Exception catch(e){

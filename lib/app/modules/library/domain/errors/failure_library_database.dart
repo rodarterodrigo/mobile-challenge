@@ -3,10 +3,10 @@ abstract class FailureLibraryDatabase implements Exception{
   FailureLibraryDatabase(this.message);
 }
 
-class IsertUserError implements FailureLibraryDatabase{
+class InsertUserError implements FailureLibraryDatabase{
   @override
   final String message;
-  IsertUserError({this.message});
+  InsertUserError({this.message});
 
   String toString() {
     Object message = this.message;
@@ -14,14 +14,14 @@ class IsertUserError implements FailureLibraryDatabase{
   }
 }
 
-class UpdateUserError implements FailureLibraryDatabase{
+class GetUserByLoginError implements FailureLibraryDatabase{
   @override
   final String message;
-  UpdateUserError({this.message});
+  GetUserByLoginError({this.message});
 
   String toString() {
     Object message = this.message;
-    return message == null? "UpdateUserError": "UpdateUserError: $message";
+    return message == null? "GetUserByLoginError": "GetUserByLoginError: $message";
   }
 }
 

@@ -11,14 +11,14 @@ class InsertUserDatasourceError implements FailureLibraryDatabase{
   }
 }
 
-class UpdateUserDatasourceError implements FailureLibraryDatabase{
+class GetUserByLoginDatasourceError implements FailureLibraryDatabase{
   @override
   final String message;
-  UpdateUserDatasourceError({this.message});
+  GetUserByLoginDatasourceError({this.message});
 
   String toString() {
     Object message = this.message;
-    return message == null? "UpdateUserDatasourceError": "UpdateUserDatasourceError: $message";
+    return message == null? "GetUserByLoginDatasourceError": "GetUserByLoginDatasourceError: $message";
   }
 }
 

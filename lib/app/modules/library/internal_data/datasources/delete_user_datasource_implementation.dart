@@ -15,14 +15,13 @@ class DeleteUserDatasourceImplementation implements DeleteUserDatasource{
     try {
       final db = await dbProviderAbstraction.database;
       await db.delete('library', where: 'id = ?', whereArgs: [userId]);
-      db.close();
       return Right(UserIdModel(id: userId));
     }
     on DeleteUserDatasourceError catch(e){
       return Left(FailureModel(status: "DeleteUserDatasourceError", statusMessage: e.message));
     }
     on Exception catch(e){
-      return Left(FailureModel(status: "Exception", statusMessage: e));
+      return Left(FailureModel(status: "Exception", statusMessage: e.toString()));
     }
   }
 }

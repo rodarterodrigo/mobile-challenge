@@ -30,7 +30,7 @@ main(){
   });
 
   test("Must return a Failure object when throws an IsertUserError", () async{
-    when(repository(any)).thenThrow(IsertUserError());
+    when(repository(any)).thenThrow(InsertUserError());
     final result = await usecase(null);
     expect(result.fold(id,id), isA<Failure>());
   });
